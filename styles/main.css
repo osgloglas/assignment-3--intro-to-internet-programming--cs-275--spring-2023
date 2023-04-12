@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url('https://images.hdqwalls.com/download/a-neon-city-4m-2560x1440.jpg');
+  font-family: 'Share Tech Mono', sans-serif;
+  color: white;
+}
+
+h1,
+h2,
+h3 {
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+header {
+  height: 100px;
+  width: 100%;
+  background-color: blueviolet;
+}
+
+header ul {
+  float: right;
+  margin-right: 40px;
+}
