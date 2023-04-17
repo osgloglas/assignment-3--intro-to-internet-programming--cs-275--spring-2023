@@ -13,7 +13,12 @@ document.addEventListener(`keydown`,(k) => {
     }
 });
 
-showModalButton.addEventListener(`click`, () => {
-    modal.style.display = `flex`;
+modal.addEventListener(`click`, (onBackground) => {
+    if (onBackground.target === document.querySelector(`.modal-panel`))
+    {
+        modal.style.display = `none`;
+    }
+
 });
-//TODO: fix this to exit modal on background click
+
+//drop down menu

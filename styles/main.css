@@ -59,8 +59,8 @@ a:visited {
 
 .modal-content-pane {
   background-color: white;
-  width: 400px;
-  height: 300px;
+  width: 50%;
+  height: 50%;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, .3);
@@ -77,4 +77,5 @@ a:visited {
 
 nav {
   display: none;
+  position: relative;
 }
