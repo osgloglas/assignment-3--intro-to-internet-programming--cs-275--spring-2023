@@ -29,7 +29,11 @@ q {
 header {
   height: 100px;
   width: 100%;
+  top: 0;
+  left: 0;
   background-color: blueviolet;
+  position: relative;
+  z-index: 2;
 }
 
 header ul {
@@ -76,6 +80,58 @@ a:visited {
 }
 
 nav {
+  display: block;
+  width: 400px;
+  height: 100px;
+  top: 0;
+  position: absolute;
+  background-color: rgb(203, 73, 255);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top .5s ease-out;
+  z-index: 1;
+}
+
+nav ul {
+  text-align: center;
+}
+
+nav ul li:first-child {
+  list-style-type: none;
+  background-color: rgb(255, 80, 240);
+  width: 25%;
+  margin-left: 10%;
+  font-size: 28px;
+  margin-top: 35px;
+  position: absolute;
+}
+
+nav ul li:last-child {
+  list-style-type: none;
+  background-color: rgb(255, 80, 240);
+  width: 25%;
+  margin-left: 60%;
+  font-size: 28px;
+  margin-top: 35px;
+  position: absolute;
+}
+
+nav ul li ul li {
   display: none;
-  position: relative;
+}
+
+@media (max-width: 736px) {
+  nav {
+    left: -400px;
+    transition: left .5s ease-out;
+  }
+}
+
+@media (min-width: 737px) {
+  nav {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: top .5s ease-out;
+  }
 }

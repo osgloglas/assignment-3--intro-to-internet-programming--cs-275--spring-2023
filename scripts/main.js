@@ -22,3 +22,36 @@ modal.addEventListener(`click`, (onBackground) => {
 });
 
 //drop down menu
+const showMenuButton = document.querySelector(`#js-triggers li:first-child a`);
+const menu = document.querySelector(`nav`);
+let menuVisible = false;
+
+showMenuButton.addEventListener(`click`, () => {
+    if (menuVisible)
+    {
+        if (window.innerWidth > 736)
+        {
+            menu.style.top = `0`;
+            menu.style.left = `50%`;
+            menu.style.transform = `translateX(-50%)`;
+        }
+        else if (window.innerWidth <= 736)
+        {
+            menu.style.left = `-400px`;
+            menu.style.top = `100px`;
+        }
+    }
+    else
+    {
+        if (window.innerWidth > 736)
+        {
+            menu.style.top = `100px`;
+        }
+        else if (window.innerWidth <= 736)
+        {
+            menu.style.left = `200px`;
+        }
+    }
+    menuVisible = !menuVisible;
+});
+//TODO: fix transitions (issues in CSS at bottom)
