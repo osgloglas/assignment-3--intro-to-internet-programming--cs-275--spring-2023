@@ -77,6 +77,18 @@ let fixJS = () => {
         .pipe(dest(`prod/scripts`));
 };
 
+let gulpLint = () => {
+    return src(`gulpfile.js`)
+        .pipe(jsLinter())
+        .pipe(jsLinter.result(result => {
+            // Called for each ESLint result.
+            console.log(`ESLint result: ${result.filePath}`);
+            console.log(`# Messages: ${result.messages.length}`);
+            console.log(`# Warnings: ${result.warningCount}`);
+            console.log(`# Errors: ${result.errorCount}`);
+        }));
+};
+
 //export
 exports.default = series(
     lintCSS,
@@ -90,4 +102,9 @@ exports.build = series(
     compressHTMLProd,
     compressCSS,
     fixJS
+);
+
+//gulp lint
+exports.lint = series(
+    gulpLint
 );
