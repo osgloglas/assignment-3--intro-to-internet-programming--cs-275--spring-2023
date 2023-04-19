@@ -24,10 +24,16 @@ let browserRefresh = () => {
     });
 };
 
-let compressHTML = () => {
+let compressHTMLDev = () => {
     return src(`*.html`)
         .pipe(htmlCompressor({collapseWhitespace:true}))
-        .pipe(dest(`prod/html`));
+        .pipe(dest(`temp`));
+};
+
+let compressHTMLProd = () => {
+    return src(`*.html`)
+        .pipe(htmlCompressor({collapseWhitespace:true}))
+        .pipe(dest(`prod`));
 };
 
 let lintCSS = () => {
@@ -36,17 +42,17 @@ let lintCSS = () => {
             reporters: [
                 {formatter: `string`, console: true}
             ]}))
-        .pipe(dest(`temp/css`));
+        .pipe(dest(`temp/styles`));
 };
 
 let compressCSS = () => {
-    return src(`style/*.css`)
+    return src(`styles/*.css`)
         .pipe(cssCompressor())
-        .pipe(dest(`prod/css`));
+        .pipe(dest(`prod/styles`));
 };
 
 let lintJS = () => {
-    return src(`js/*.js`)
+    return src(`scripts/*.js`)
         .pipe(jsLinter())
         .pipe(jsLinter.result(result => {
             // Called for each ESLint result.
@@ -55,20 +61,20 @@ let lintJS = () => {
             console.log(`# Warnings: ${result.warningCount}`);
             console.log(`# Errors: ${result.errorCount}`);
         }))
-        .pipe(dest(`temp/js`));
+        .pipe(dest(`temp/scripts`));
 };
 
 let transpileJS = () => {
-    return src(`js/*.js`)
+    return src(`scripts/*.js`)
         .pipe(jsTranspiler())
-        .pipe(dest(`temp/js`));
+        .pipe(dest(`temp/scripts`));
 };
 
 let fixJS = () => {
-    return src(`temp/*.js`)
-        .pipe(jsCompressor())
+    return src(`scripts/*.js`)
         .pipe(jsTranspiler())
-        .pipe(dest(`prod/js`));
+        .pipe(jsCompressor())
+        .pipe(dest(`prod/scripts`));
 };
 
 //export
@@ -76,11 +82,12 @@ exports.default = series(
     lintCSS,
     lintJS,
     transpileJS,
+    compressHTMLDev,
     browserRefresh
 );
 
 exports.build = series(
-    compressHTML,
+    compressHTMLProd,
     compressCSS,
     fixJS
 );
