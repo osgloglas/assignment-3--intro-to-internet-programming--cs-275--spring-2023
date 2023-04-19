@@ -54,4 +54,18 @@ showMenuButton.addEventListener(`click`, () => {
     }
     menuVisible = !menuVisible;
 });
-//TODO: fix transitions (issues in CSS at bottom)
+
+window.addEventListener(`resize`, () => {
+    if (window.innerWidth > 736)
+    {
+        menu.style.top = `0`;
+        menu.style.left = `50%`;
+        menu.style.transform = `translateX(-50%)`;
+    }
+    else
+    {
+        menu.style.left = `-400px`;
+        menu.style.top = `100px`;
+    }
+    menuVisible = false;
+});
