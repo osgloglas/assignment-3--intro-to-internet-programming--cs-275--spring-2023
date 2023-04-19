@@ -37,7 +37,7 @@ showMenuButton.addEventListener(`click`, () => {
         }
         else if (window.innerWidth <= 736)
         {
-            menu.style.left = `-400px`;
+            menu.style.left = `-200px`;
             menu.style.top = `100px`;
         }
     }
@@ -49,7 +49,7 @@ showMenuButton.addEventListener(`click`, () => {
         }
         else if (window.innerWidth <= 736)
         {
-            menu.style.left = `200px`;
+            menu.style.left = `100px`;
         }
     }
     menuVisible = !menuVisible;
@@ -64,7 +64,7 @@ window.addEventListener(`resize`, () => {
     }
     else
     {
-        menu.style.left = `-400px`;
+        menu.style.left = `-200px`;
         menu.style.top = `100px`;
     }
     menuVisible = false;

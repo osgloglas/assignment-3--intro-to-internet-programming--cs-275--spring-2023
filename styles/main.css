@@ -122,8 +122,21 @@ nav ul li ul li {
 
 @media (max-width: 736px) {
   nav {
-    left: -400px;
+    left: -200px;
     transition: left .5s ease-out;
+    width: 200px;
+  }
+
+  nav ul li:first-child {
+    width: 50%;
+    margin-left: 50px;
+    margin-top: 15px;
+  }
+
+  nav ul li:last-child {
+    width: 50%;
+    margin-left: 50px;
+    margin-top: 50px;
   }
 }
 
